@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface UserRepository extends CrudRepository<User, Integer> {
 
+	//custom CRUD operations
 	//select
 	@Query(value="SELECT * FROM user where name = :name", nativeQuery = true)
 	List<User> findByName(@Param("name") String name);
@@ -23,6 +24,12 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 	@Modifying
 	@Query(value="UPDATE user SET name = :name, email = :email where id = :id", nativeQuery = true)
 	int updateUser(@Param("id") int id,@Param("name") String name,@Param("email") String email);
+	
+	//delete
+	@Transactional
+	@Modifying
+	@Query(value="DELETE FROM user where id = :id", nativeQuery = true)
+	int deleteUser(@Param("id") int id);
 	
 	
 	

@@ -53,6 +53,13 @@ public class MainController {
 	  
   }
   
+  @PostMapping(path="/deleteUser")
+  public @ResponseBody int updateUser(@RequestParam int id) {
+	  return userRepository.deleteUser(id);
+	  
+  }
+  
+  
   
   
 }
