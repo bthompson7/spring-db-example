@@ -29,7 +29,7 @@ public class MainController {
     newUser.setName(name);
     newUser.setEmail(email);
     userRepository.save(newUser);
-    return "Saved";
+    return "Added user to the database";
   }
 
   @GetMapping(path="/all")
