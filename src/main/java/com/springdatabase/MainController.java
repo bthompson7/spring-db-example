@@ -16,7 +16,8 @@ public class MainController {
   private UserRepository userRepository;
 
   @PostMapping(path="/add") // Map ONLY POST Requests
-  public @ResponseBody String addNewUser (@RequestParam String name
+  public @ResponseBody String addNewUser 
+  (@RequestParam String name
       , @RequestParam String email) {
 
     User newUser = new User();
@@ -37,6 +38,21 @@ public class MainController {
 	  return userRepository.findByName(name);
 	  
   }
+  
+  @GetMapping(path="/getID")
+  public @ResponseBody Iterable<User> findID(@RequestParam int id) {
+	  return userRepository.findById(id);
+  }
+  
+  
+  @PostMapping(path="/updateUser")
+  public @ResponseBody int updateUser(@RequestParam int id,@RequestParam String name,
+		  @RequestParam String email) {
+	  
+	  return userRepository.updateUser(id,name,email);
+	  
+  }
+  
   
   
 }
