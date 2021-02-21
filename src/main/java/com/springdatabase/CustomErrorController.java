@@ -13,6 +13,6 @@ public class CustomErrorController implements ErrorController {
 	@RequestMapping("/error")
 	@ResponseBody
 	public String getErrorPath() {
-		return "<center><h1>You're seeing this page because an error occured.</h1></center>";
+		return "<h1 align='center'>You're seeing this page because an error occured.</h1>";
 	}
 }
