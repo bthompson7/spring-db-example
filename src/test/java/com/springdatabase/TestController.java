@@ -20,9 +20,15 @@ public class TestController {
 	private TestRestTemplate restTemplate;
 
 	@Test
-	public void greetingShouldReturnDefaultMessage() throws Exception {
-		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/v1/getAllUser?name=Phil",
+	public void getUserByName() throws Exception {
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/api/v1/getUsers?name=Phil",
 				String.class)).contains("philemail123@gmail.com");
+	}
+	
+	@Test
+	public void getUserByID() throws Exception {
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "api/v1/getID?id=7",
+				String.class)).contains("7");
 	}
 	
 	

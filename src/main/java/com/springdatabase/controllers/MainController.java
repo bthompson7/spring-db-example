@@ -1,4 +1,4 @@
-package com.springdatabase;
+package com.springdatabase.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.springdatabase.model.User;
+import com.springdatabase.repository.UserRepository;
 
 @Controller
 @RequestMapping(path="/api/v1")
@@ -36,7 +39,7 @@ public class MainController {
   
   
   //get user all users that match a name
-  @GetMapping(path="/getUser")
+  @GetMapping(path="/getUsers")
   public @ResponseBody Iterable<User> findUser(@RequestParam String name) {
 	  return userRepository.findByName(name);
 	  
