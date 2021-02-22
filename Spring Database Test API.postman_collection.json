@@ -11,7 +11,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/v1/getAllUser?name=Phil",
+					"raw": "http://localhost:8080/api/v1/getUser?name=John",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -20,12 +20,12 @@
 					"path": [
 						"api",
 						"v1",
-						"getAllUser"
+						"getUser"
 					],
 					"query": [
 						{
 							"key": "name",
-							"value": "Phil"
+							"value": "John"
 						}
 					]
 				}
