@@ -11,7 +11,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/v1/getUser?name=John",
+					"raw": "http://localhost:8080/api/v1/getUsers?name=Phil",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -20,13 +20,61 @@
 					"path": [
 						"api",
 						"v1",
-						"getUser"
+						"getUsers"
 					],
 					"query": [
 						{
 							"key": "name",
-							"value": "John"
+							"value": "Phil"
 						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/getID?id=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"getID"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL USERS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"all"
 					]
 				}
 			},
@@ -69,34 +117,7 @@
 			"response": []
 		},
 		{
-			"name": "GET ID",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/v1/getID?id=1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"v1",
-						"getID"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "1"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update User",
+			"name": "UPDATE USER INFO",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -105,17 +126,17 @@
 					"formdata": [
 						{
 							"key": "id",
-							"value": "5",
+							"value": "7",
 							"type": "text"
 						},
 						{
 							"key": "name",
-							"value": "Jen",
+							"value": "Adam",
 							"type": "text"
 						},
 						{
 							"key": "email",
-							"value": "jen5423@gmail.com",
+							"value": "adam125436@yahoo.com",
 							"type": "text"
 						}
 					]
@@ -137,27 +158,6 @@
 			"response": []
 		},
 		{
-			"name": "GET ALL USERS",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/api/v1/all",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"api",
-						"v1",
-						"all"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "DELETE USER",
 			"request": {
 				"method": "POST",
@@ -167,7 +167,7 @@
 					"formdata": [
 						{
 							"key": "id",
-							"value": "3",
+							"value": "1",
 							"type": "text"
 						}
 					]
