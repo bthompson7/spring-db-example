@@ -6,6 +6,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -30,6 +32,25 @@ public class TestController {
 		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "api/v1/getID?id=7",
 				String.class)).contains("7");
 	}
+	
+	@Test
+	public void getAllUsers() throws Exception {
+		assertThat(this.restTemplate.getForObject("http://localhost:" + port + "api/v1/all",
+				String.class)).contains("name");
+	}
+
+	@Test
+	public void addNewUserToDatabase() throws Exception{
+		
+		MultiValueMap<String, Object> parts = new LinkedMultiValueMap<String, Object>();
+		parts.add("name", "Test");
+		parts.add("email", "testemail123@gmail.com");
+		
+	assertThat(this.restTemplate.postForEntity("http://localhost:" + port + "api/v1/add",
+			parts,  String.class)).asString().contains("Added user to the database");	
+	}
+	
+
 	
 	
 }
