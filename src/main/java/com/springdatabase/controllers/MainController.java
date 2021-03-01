@@ -73,6 +73,20 @@ public class MainController {
   public @ResponseBody int updateUser(@RequestParam int id,@RequestParam String name,
 		  @RequestParam String email) {
 	  
+	  ValidateUser u = new ValidateUser();
+		 
+		boolean isNameValid = u.isNameValid(name);
+		boolean isEmailValid = u.isEmailValid(email);
+		
+		if(isNameValid == false) {
+			return -1;
+		}
+		
+		if(isEmailValid == false) {
+			return -1;
+		}
+		
+	  
 	  return userRepository.updateUser(id,name,email);
 	  
   }
