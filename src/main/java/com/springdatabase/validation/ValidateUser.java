@@ -26,8 +26,8 @@ public class ValidateUser {
       
       public boolean isEmailValid(String email) {
     	  
-    	  String name_pattern = "[\\w\\d-]+[@]{1}[-\\w\\d]+[.]{1}[-\\w\\d]+";
-	      Pattern r = Pattern.compile(name_pattern);    	      
+    	  String email_pattern = "[\\w\\d-]+[@]{1}[-\\w\\d]+[.]{1}[-\\w\\d]+";
+	      Pattern r = Pattern.compile(email_pattern);    	      
 	      Matcher m = r.matcher(email);
 	      
 	      if(m.find()) {
