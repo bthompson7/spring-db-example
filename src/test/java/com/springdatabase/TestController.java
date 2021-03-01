@@ -50,8 +50,11 @@ public class TestController {
 				.asString().contains("Added user to the database");
 	}
 
+	
+	//various inputs that could break everything
+	
 	@Test
-	public void isInputValid() throws Exception {
+	public void invalidInput() throws Exception {
 
 		MultiValueMap<String, Object> parts = new LinkedMultiValueMap<String, Object>();
 		parts.add("name", "Test Name 😍😍😍😍😍😍"); // invalid name
@@ -61,11 +64,41 @@ public class TestController {
 	}
 	
 	@Test
-	public void isInputValid2() throws Exception {
+	public void invalidInput2() throws Exception {
 
 		MultiValueMap<String, Object> parts = new LinkedMultiValueMap<String, Object>();
-		parts.add("name", "/dev/null; touch /tmp/blns.fail ; echo"); // invalid name
+		parts.add("name", "𝓣𝓱𝓮 𝓺𝓾𝓲𝓬𝓴 𝓫𝓻𝓸𝔀𝓷 𝓯𝓸𝔁 𝓳𝓾𝓶𝓹𝓼 𝓸𝓿𝓮𝓻 𝓽𝓱𝓮 𝓵𝓪𝔃𝔂 𝓭𝓸𝓰"); // invalid name
 		parts.add("email", "testemail123@gmail.com"); // invalid email
+		assertThat(this.restTemplate.postForEntity("http://localhost:" + port + "api/v1/add", parts, String.class))
+				.asString().contains("invalid name or email");
+	}
+
+	@Test
+	public void invalidInput3() throws Exception {
+
+		MultiValueMap<String, Object> parts = new LinkedMultiValueMap<String, Object>();
+		parts.add("name", "<script\\x20type=\\\"text/javascript\\\">javascript:alert(1);</script>"); // invalid name
+		parts.add("email", "totallylegitinput@gmail.com"); // invalid email
+		assertThat(this.restTemplate.postForEntity("http://localhost:" + port + "api/v1/add", parts, String.class))
+				.asString().contains("invalid name or email");
+	}
+	
+	@Test
+	public void invalidInput4() throws Exception {
+
+		MultiValueMap<String, Object> parts = new LinkedMultiValueMap<String, Object>();
+		parts.add("name", "<Roses are \u001b[0;31mred\u001b[0m, violets are \u001b[0;34mblue. Hope you enjoy terminal hue"); // invalid name
+		parts.add("email", "totallylegitinput@gmail.com"); // invalid email
+		assertThat(this.restTemplate.postForEntity("http://localhost:" + port + "api/v1/add", parts, String.class))
+				.asString().contains("invalid name or email");
+	}
+	
+	@Test
+	public void invalidInput5() throws Exception {
+
+		MultiValueMap<String, Object> parts = new LinkedMultiValueMap<String, Object>();
+		parts.add("name", "1'; DROP TABLE users-- 1"); // invalid name
+		parts.add("email", "totallylegitinput@gmail.com"); // invalid email
 		assertThat(this.restTemplate.postForEntity("http://localhost:" + port + "api/v1/add", parts, String.class))
 				.asString().contains("invalid name or email");
 	}
