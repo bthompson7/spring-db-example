@@ -43,13 +43,26 @@ public class TestController {
 	public void addNewUserToDatabase() throws Exception{
 		
 		MultiValueMap<String, Object> parts = new LinkedMultiValueMap<String, Object>();
-		parts.add("name", "Test");
-		parts.add("email", "testemail123@gmail.com");
+		parts.add("name", "John Smith");
+		parts.add("email", "jsmith12356@gmail.com");
 		
 	assertThat(this.restTemplate.postForEntity("http://localhost:" + port + "api/v1/add",
 			parts,  String.class)).asString().contains("Added user to the database");	
 	}
 	
+	
+	@Test
+	public void isInputValid() throws Exception{
+		
+		MultiValueMap<String, Object> parts = new LinkedMultiValueMap<String, Object>();
+		parts.add("name", "Test->/?"); //invalid name
+		parts.add("email", "testemail123@gmail.....com"); //invalid email 
+		
+	assertThat(this.restTemplate.postForEntity("http://localhost:" + port + "api/v1/add",
+			parts,  String.class)).asString().contains("invalid name or email");	
+	}
+	
+
 
 	
 	

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.springdatabase.model.User;
 import com.springdatabase.repository.UserRepository;
+import com.springdatabase.validation.ValidateUser;
 
 @Controller
 @RequestMapping(path="/api/v1")
@@ -24,6 +25,21 @@ public class MainController {
   (@RequestParam String name
       , @RequestParam String email) {
 
+	  
+	ValidateUser u = new ValidateUser();
+	 
+	boolean isNameValid = u.isNameValid(name);
+	boolean isEmailValid = u.isEmailValid(email);
+	
+	if(isNameValid == false) {
+		return "invalid name or email";
+	}
+	
+	if(isEmailValid == false) {
+		return "invalid name or email";
+	}
+	
+	
     User newUser = new User();
     newUser.setName(name);
     newUser.setEmail(email);
