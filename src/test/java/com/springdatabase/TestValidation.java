@@ -8,13 +8,32 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TestValidation {
 
 	@Test
-	public void testName() throws Exception {
+	public void testValidName() throws Exception {
 		ValidateUser u = new ValidateUser();
 		
 		boolean isNameValid = u.isNameValid("Ben Thompson");
 		
 		assertThat(isNameValid);
 	}
+	
+	@Test
+	public void testValidName2() throws Exception {
+		ValidateUser u = new ValidateUser();
+		
+		boolean isNameValid = u.isNameValid("Ben-Philip Thompson");
+		
+		assertThat(isNameValid);
+	}
+	
+	@Test
+	public void testInvalidName() throws Exception {
+		ValidateUser u = new ValidateUser();
+		
+		boolean isNameValid = u.isNameValid("Ben$ Thompson");
+		
+		assertThat(isNameValid);
+	}
+	
 	
 	
 	@Test

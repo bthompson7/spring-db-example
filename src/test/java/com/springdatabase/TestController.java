@@ -56,7 +56,7 @@ public class TestController {
 		
 		MultiValueMap<String, Object> parts = new LinkedMultiValueMap<String, Object>();
 		parts.add("name", "Test->/?"); //invalid name
-		parts.add("email", "testemail123@gmail.....com"); //invalid email 
+		parts.add("email", "testemail123@gma$il.com"); //invalid email 
 		
 	assertThat(this.restTemplate.postForEntity("http://localhost:" + port + "api/v1/add",
 			parts,  String.class)).asString().contains("invalid name or email");	

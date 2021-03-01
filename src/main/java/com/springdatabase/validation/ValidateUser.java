@@ -12,7 +12,7 @@ public class ValidateUser {
       
       public boolean isNameValid(String name) {
     	  
-    	  	  String name_pattern = "[a-zA-Z\\w-]+";
+    	  	  String name_pattern = "[\\d\\w-]+";
     	      Pattern r = Pattern.compile(name_pattern);    	      
     	      Matcher m = r.matcher(name);
     	      
