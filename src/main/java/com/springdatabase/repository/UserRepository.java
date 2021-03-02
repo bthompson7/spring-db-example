@@ -15,7 +15,7 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 
 	//custom CRUD operations
 	//select
-	@Query(value="SELECT * FROM user where name = :name", nativeQuery = true)
+	@Query(value="SELECT * FROM user where name like %:name%", nativeQuery = true)
 	List<User> findByName(@Param("name") String name);
 	
 	@Query(value="SELECT * FROM user where id = :id", nativeQuery = true)
