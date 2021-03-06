@@ -84,7 +84,7 @@ public class TestValidation {
 	 */
 	@Test
 	public void testInvalidEmail() throws Exception {
-		boolean isEmailValid = u.isEmailValid("somecoolemail@yahoo........org");
+		boolean isEmailValid = u.isEmailValid("somec$%@oolemail@yahoo.rg");
 		assertThat(isEmailValid).isEqualTo(false);
 	}
 	
@@ -93,6 +93,13 @@ public class TestValidation {
 		boolean isEmailValid = u.isEmailValid("somecoolemail@yaho$o.org");
 		assertThat(isEmailValid).isEqualTo(false);
 	}
+	
+	@Test
+	public void testInvalidEmail3() throws Exception {		
+		boolean isEmailValid = u.isEmailValid("$$$$$$-email@gmail.com");
+		assertThat(isEmailValid).isEqualTo(false);
+	}
+	
 	
 	
 	

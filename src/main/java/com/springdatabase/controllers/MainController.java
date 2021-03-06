@@ -31,11 +31,11 @@ public class MainController {
 	boolean isNameValid = u.isNameValid(name);
 	boolean isEmailValid = u.isEmailValid(email);
 	
-	if(isNameValid == false) {
+	if(!isNameValid) {
 		return "invalid name or email";
 	}
 	
-	if(isEmailValid == false) {
+	if(!isEmailValid) {
 		return "invalid name or email";
 	}
 	
