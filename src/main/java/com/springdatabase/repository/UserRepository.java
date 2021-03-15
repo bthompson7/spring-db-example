@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 
 import com.springdatabase.model.User;
 
@@ -19,7 +20,7 @@ public interface UserRepository extends CrudRepository<User, Integer> {
 	List<User> findByName(@Param("name") String name);
 	
 	@Query(value="SELECT * FROM user where id = :id", nativeQuery = true)
-	List<User> findById(@Param("id") int id);
+	User findById(@Param("id") int id);
 
 	//update
 	@Transactional
