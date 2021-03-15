@@ -60,10 +60,7 @@ public class MainController {
   //get user all users that match a name
   @GetMapping(path="/getUsers")
   public @ResponseBody Iterable<User> findUser(@RequestParam String name) {
-	  
-	
-	  System.out.println(userRepository.findByName(name));
-	  
+	  	  
 	  if(userRepository.findByName(name) == null) {
 		  throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 	  }
@@ -76,8 +73,6 @@ public class MainController {
   @GetMapping(path="/getID")
   public @ResponseBody User findID(@RequestParam int id) {
 	  
-	  System.out.println(userRepository.findById(id));
-
 	  if(userRepository.findById(id) == null) {
 		  throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 	  }
